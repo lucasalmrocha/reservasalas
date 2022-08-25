@@ -6,7 +6,7 @@
                 <div class="article-metadata">
                     {% for sala in salas %}
                         {% if sala.id==reserva.sala_id %}
-                            <a class="mr-2" href="{{ url_for('reservas.reserva', reserva_id=reserva.id) }}">{{sala.sala}}</a>
+                            <a class="mr-2" href="{{ url_for('reservas.reserva', reserva_id=reserva.id) }}">Sala: {{sala.sala}}</a>
                         {% endif %}
                     {% endfor %}
                     
