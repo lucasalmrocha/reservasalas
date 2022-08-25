@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for reserva in reservas.items %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    {% for sala in salas %}
+                        {% if sala.id==reserva.sala_id %}
+                            <a class="mr-2" href="{{ url_for('reservas.reserva', reserva_id=reserva.id) }}">{{sala.sala}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                </div>
+            </div>
+            <p class="article-content">Reservante: {{ reserva.reservante }}</p>
+            <p class="article-content">Início: {{ reserva.inicio }}</p>
+            <p class="article-content">Fim: {{ reserva.fim }}</p>
+        </article>
+    {% endfor %}
+    {% for page_num in reservas.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+        {% if reservas.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('reservas.ver_reservas', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('reservas.ver_reservas', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+        {% else %}
+        ...
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
