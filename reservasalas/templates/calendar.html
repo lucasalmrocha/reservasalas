@@ -17,7 +17,7 @@
                 ],
                 eventDidMount: function(info) {
                     $(info.el).tooltip({
-                        title: "Início:"+info.event.start+" Fim:"+info.event.end,
+                        title: "Início: "+info.event.start.getHours()+"h"+info.event.start.getMinutes()+"min"+" - Fim: "+info.event.end.getHours()+"h"+info.event.end.getMinutes()+"min",
                         container: 'body',
                         delay: { "show": 50, "hide": 50 }
                     });
