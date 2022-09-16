@@ -1,0 +1,29 @@
+{% block content %}
+    <div id="calendar" style="flex-grow: 1;">
+        <script>
+            let calendarEl = document.getElementById('calendar');
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                let calendar = new FullCalendar.Calendar(calendarEl, {
+                    events : [
+                        {% for event in events %}
+                            {
+                                title : '{{ event.reservante }}',
+                                start : '{{ event.inicio }}',
+                                end: '{{ event.fim }}',
+                                url: "{{ url_for('reservas.reserva', reserva_id=event.id) }}",
+                            },
+                        {% endfor %}
+                ],
+                eventDidMount: function(info) {
+                    $(info.el).tooltip({
+                        title: "Início:"+info.event.start+" Fim:"+info.event.end,
+                        container: 'body',
+                        delay: { "show": 50, "hide": 50 }
+                    });
+                }});
+                calendar.render();
+            });
+        </script>
+    </div>
+{% endblock content %}

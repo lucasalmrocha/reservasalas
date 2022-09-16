@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from reservasalas import db, bcrypt
 from reservasalas.models import User, Sala
 from reservasalas.users.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from reservasalas.users.utils import save_picture
+#from reservasalas.users.utils import save_picture
 
 users = Blueprint('users', __name__)
 

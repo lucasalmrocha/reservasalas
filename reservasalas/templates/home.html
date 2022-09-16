@@ -14,6 +14,7 @@
               <small class="text-muted">Reservado agora</small>
             {% endif %}
           {% endfor %}
+          <a class="mr-2" href="{{ url_for('main.home_calendar', sala_id=sala.id) }}">Ver reservas</a>
         </div>
       </article>
     {% endfor %}

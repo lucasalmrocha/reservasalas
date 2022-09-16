@@ -14,12 +14,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     #image_file = db.Column(db.String(20), unique=True, default='default.jpg')
-    password = db.Column(db.String(60), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
     reservas = db.relationship('Reservas', backref='author', lazy=True)
     salas = db.relationship('Sala', backref='author', lazy=True)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}')"
 	
 class Sala(db.Model):
     __tablename__='salas'
@@ -47,6 +47,8 @@ class Reservas(db.Model):
     reservante = db.Column(db.String(50), nullable=False)
     inicio = db.Column(db.DateTime, nullable=False)
     fim = db.Column(db.DateTime, nullable=False)
+    observacoes = db.Column(db.String(120))
+    data_creacao = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
-        return f"Reservas('{self.sala}', '{self.user_id}', '{self.horario_inicial}', '{self.horario_final}')"
+        return f"Reservas('{self.sala_id}', '{self.user_id}', '{self.inicio}', '{self.fim}', '{self.observacoes})"
