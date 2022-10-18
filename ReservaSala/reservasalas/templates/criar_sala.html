@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">{{ legend }}</legend>
+                <div class="form-group">
+                    {{ form.sala.label(class="form-control-label") }}
+                    {% if form.sala.errors %}
+                        {{ form.sala(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.sala.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.sala(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.tipo_sala.label(class="form-control-label") }}
+                    {% if form.tipo_sala.errors %}
+                        {{ form.tipo_sala(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.tipo_sala.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.tipo_sala(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.tipo_lousa.label(class="form-control-label") }}
+                    {% if form.tipo_lousa.errors %}
+                        {{ form.tipo_lousa(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.tipo_lousa.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.tipo_lousa(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.tipo_piso.label(class="form-control-label") }}
+                    {% if form.tipo_piso.errors %}
+                        {{ form.tipo_piso(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.tipo_piso.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.tipo_piso(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.capacidade.label(class="form-control-label") }}
+                    {% if form.capacidade.errors %}
+                        {{ form.capacidade(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.capacidade.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.capacidade(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.andar.label(class="form-control-label") }}
+                    {% if form.andar.errors %}
+                        {{ form.andar(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.andar.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.andar(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.bloco_torre.label(class="form-control-label") }}
+                    {% if form.bloco_torre.errors %}
+                        {{ form.bloco_torre(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.bloco_torre.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.bloco_torre(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </p>
+                <div class="form-group">
+                    {{ form.campus.label(class="form-control-label") }}
+                    {% if form.campus.errors %}
+                        {{ form.campus(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.campus.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.campus(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+        </p>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div>
+    <h1>Salas</h1>
+    {% for sala in salas.items %}
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="{{ url_for('salas.sala', sala_id=sala.id) }}">{{ sala.sala }}</a>
+            <small class="text-muted">{{ sala.campus }}</small>
+          </div>
+          {% for reserva in reservas %}
+            {% if reserva.sala_id==sala.id and date>=reserva.inicio and reserva.fim>=date %} <!-- Verificando se há alguma reserva no horário atual para a sala correspondente -->
+              <small class="text-muted">Reservado agora</small>
+            {% endif %}
+          {% endfor %}
+          <a class="mr-2" href="{{ url_for('main.home_calendar', sala_id=sala.id) }}">Ver reservas</a>
+        </div>
+      </article>
+    {% endfor %}
+    {% for page_num in salas.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if salas.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div>
+    
+  </div>
+{% endblock content %}

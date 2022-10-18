@@ -1,0 +1,10 @@
+Flask
+flask-sqlalchemy
+flask-login
+flask-wtf
+sqlalchemy
+psycopg2-binary
+postgresql
+pytest
+ldap3
+selenium
