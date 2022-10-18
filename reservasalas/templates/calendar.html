@@ -11,13 +11,17 @@
                                 title : '{{ event.reservante }}',
                                 start : '{{ event.inicio }}',
                                 end: '{{ event.fim }}',
-                                url: "{{ url_for('reservas.reserva', reserva_id=event.id) }}",
+                                extendedProps: {
+                                    sala_nome: '{{ event.sala_nome }}'
+                                },
+                                url: "{{ url_for('reservas.reserva', reserva_id=event.id) }}"
                             },
                         {% endfor %}
                 ],
                 eventDidMount: function(info) {
+                    console.log(info.event.extendedProps);
                     $(info.el).tooltip({
-                        title: "Início: "+info.event.start.getHours()+"h"+info.event.start.getMinutes()+"min"+" - Fim: "+info.event.end.getHours()+"h"+info.event.end.getMinutes()+"min",
+                        title: "Sala: "+info.event.extendedProps.sala_nome+" Início: "+info.event.start.getHours()+"h"+info.event.start.getMinutes()+"min"+" - Fim: "+info.event.end.getHours()+"h"+info.event.end.getMinutes()+"min",
                         container: 'body',
                         delay: { "show": 50, "hide": 50 }
                     });

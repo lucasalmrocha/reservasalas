@@ -6,7 +6,7 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">{{ legend }}</legend>
                 <div class="form-group">
-                    {{ form.sala.label(class="form-control-label") }}
+                    {{ form.sala.label(class="form-control-label" ) }}
                     {% if form.sala.errors %}
                         {{ form.sala(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -15,8 +15,15 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.sala(class="form-control form-control-lg") }}
+                        {{ form.sala(class="form-control form-control-lg", autocomplete="on") }}
                     {% endif %}
+                    <script>
+                        var sala = document.getElementById("sala")
+                        function primeira_sala(primeira){sala.value = primeira}
+                        sala.addEventListener('input', function(){
+                            window.location.assign("http://127.0.0.1:5000/reservas/nova_reserva/"+sala.value);
+                        })
+                    </script>
                 </div>
                 </p>
                 <div>

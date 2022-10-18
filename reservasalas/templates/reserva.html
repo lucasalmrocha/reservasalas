@@ -13,8 +13,8 @@
                 {% endif %}
             </div>
             <p class="article-content">Reservante: {{ reserva.reservante }}</p>
-            <p class="article-content">Início: {{ reserva.inicio }}</p>
-            <p class="article-content">Fim: {{ reserva.fim }}</p>
+            <p class="article-content">Início: {{ reserva.inicio.strftime('%H:%M') }}</p>
+            <p class="article-content">Fim: {{ reserva.fim.strftime('%H:%M') }}</p>
         </div>
     </article>
     <!-- Modal -->

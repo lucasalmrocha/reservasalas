@@ -1,12 +1,11 @@
-from email.policy import default
 from wsgiref.validate import validator
 from xmlrpc.client import boolean
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, DateField, TimeField, TextAreaField, BooleanField
-from wtforms.validators import DataRequired, InputRequired, Length, Optional
+from wtforms.validators import DataRequired, InputRequired, Length, Optional, NumberRange
 
 class ReservaForm(FlaskForm):
-    sala = SelectField(u'Sala', coerce=int, validators=[DataRequired()]) #coerce faz com que o select retorne um valor especifico ao selecionar um item, no caso quero que ele retorne o id da sala escolhida
+    sala = SelectField(u'Sala', coerce=int, validators=[DataRequired(), NumberRange(min=0, message="Selecione uma sala para fazer reserva")]) #coerce faz com que o select retorne um valor especifico ao selecionar um item, no caso quero que ele retorne o id da sala escolhida
     observacoes = TextAreaField('Observações', validators=[Length(max=120)])
     data = DateField('Data', validators=[InputRequired()])
     hora_inicio = TimeField('Início', validators=[DataRequired()], format='%H:%M')
